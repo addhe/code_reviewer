@@ -1,53 +1,65 @@
-# Code Review
+# Code Reviewer with Gemini API
 
-This repository contains a Python code that can help you review your code under the open-source MIT license. The code review process is an essential part of software development, as it helps identify bugs, improve code quality, and ensure adherence to best practices.
+This script leverages the Google Gemini API to provide code reviews based on user-defined prompts. 
 
 ## Features
 
-The code review tool provides the following features:
+- **Gemini API Integration:**  Uses the Google Gemini API for natural language understanding and code analysis.
+- **Custom Prompts:**  Allows users to provide their own prompts for code review, tailoring the analysis to specific needs.
+- **Code File Input:**  Accepts a file path to the code that needs to be reviewed.
+- **User-Friendly Output:**  Presents the review in a clear and organized format, highlighting the Gemini API's feedback.
 
-1. **Automated Review**: The tool performs automated code review by analyzing your Python code and providing feedback on potential issues, such as syntax errors, code smells, and performance bottlenecks.
+## Requirements
 
-2. **Static Analysis**: It utilizes static code analysis techniques to identify common coding mistakes, such as unused variables, unreachable code, and potential security vulnerabilities.
+- Python 3.7 or higher
+- Google Cloud Account (for accessing the Gemini API)
+- `google-generativeai` library: `pip install google-generativeai`
+- `colorama` library: `pip install colorama`
 
-3. **Code Metrics**: The tool calculates various code metrics, including cyclomatic complexity, code duplication, and code coverage, to assess the overall quality and maintainability of your code.
+## Setup
 
-4. **Documentation Check**: It verifies the presence of proper documentation, such as function and class docstrings, to ensure that your code is well-documented and easy to understand.
+1. **Set Up Google Cloud Account:**
+   - Create a Google Cloud project.
+   - Enable the Gemini API within your project.
+   - Get your API key from the Google Cloud console (you'll need to configure billing for the API).
 
-5. **Style Guide Enforcement**: The tool enforces adherence to a specific coding style guide, such as PEP 8, by checking for violations and suggesting appropriate style improvements.
+2. **Environment Variable:**
+   - Set the environment variable `GOOGLE_GEMINI_API_KEY` to the key you obtained in step 1.
+   - You can do this in your shell: `export GOOGLE_GEMINI_API_KEY="YOUR_API_KEY"`
 
-6. **Integration with Version Control**: It seamlessly integrates with popular version control systems, such as Git, allowing you to review code changes and provide feedback directly within the repository.
+3. **Install Dependencies:**
+   - Install the required libraries using `pip install google-generativeai colorama`.
 
-## Getting Started
+## Usage
 
-To use the code review tool, follow these steps:
-
-1. Clone the repository:
-
+1. **Save the code:** Save the provided Python script as `code_reviewer.py`.
+2. **Run the script:** 
    ```bash
-   git clone https://github.com/addhe/code_reviewer.git
+   python code_reviewer.py "Your custom prompt here" example.sql
    ```
+   - Replace `"Your custom prompt here"` with the prompt you want to use for code review.
+   - Replace `example.sql` with the actual file path of the code you want to review.
 
-2. Run the code review tool:
+## Example
 
-   ```bash
-   python code_reviewer.py <your_code_file_path_and_location>
-   ```
+```bash
+python code_reviewer.py "Please review this SQL query for potential issues and provide suggestions for improvement." my_query.sql
+```
 
-3. Provide the path to the Python file or directory you want to review.
+## Notes
 
-4. Review the generated report, which will highlight any issues or suggestions for improvement in your code.
+- **Prompting:**
+    - The quality of the code review is highly dependent on the prompt you provide. 
+    - Be clear and specific about what you want the Gemini API to focus on.
+- **Cost:**  The Gemini API may incur costs for usage. Consult Google Cloud pricing for details.
+- **Error Handling:**  The script includes basic error handling, but it may need further enhancement for more robust scenarios.
 
-## Contributing
+## Disclaimer
 
-Contributions to this code review tool are welcome! If you find any bugs, have suggestions for improvements, or want to add new features, please open an issue or submit a pull request.
-
-Before contributing, please ensure that your code adheres to the project's coding style and passes all existing tests. Additionally, make sure to update the documentation as necessary.
+This is a basic implementation of a code reviewer using the Gemini API.  The code review process and the quality of the feedback will depend on the specific capabilities of the Gemini API and the clarity of the user's prompts. 
 
 ## License
-
-This code review tool is open-source and distributed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This code review tool is open-source and distributed under the MIT License. See the LICENSE file for more information.
 
 ## Acknowledgements
-
-This code review tool was inspired by the need for a comprehensive and automated solution to review Python code. Special thanks to the open-source community for their valuable contributions and feedback.
+This code review tool was inspired by the need for a comprehensive and automated solution to review python code at first, now it's more general purpose. Special thanks to the open-source community for their valuable contributions and feedback.
